@@ -12,6 +12,8 @@ const checkBoolean = (req, res, next) => {
     if (
       is_favorite == "true" ||
       is_favorite == "false" ||
+      is_favorite == true ||
+      is_favorite == false ||
       is_favorite == undefined
     ) {
       next();

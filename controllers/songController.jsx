@@ -14,6 +14,18 @@ songs.get("/", async (req, res) => {
      }
 })
 
+//ORDER : ASC / DESC // not working???
+songs.get('/', async (req, res) => {
+   const order = req.query.order
+   res.json(order);
+   const allSongs = await getAllSongs();
+   if (order === "asc"){
+      res.json(allSongs.sort((a,b) => a.title.localeCompare(b.title)))
+   }else if (order === "desc") {
+      res.json(allSongs.sort((a,b) => b.title.localeCompare(a.title)))
+   }
+})
+
 //SHOW
 songs.get("/:id", async (req, res) => {
    const { id } = req.params;
